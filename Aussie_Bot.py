@@ -13,7 +13,7 @@ import insult
 ### IRC
 server = "chat.freenode.net"
 port = 6697
-channel = "##aussies"
+channel = BotDefines.channel
 botnick = BotDefines.botnick
 password = BotDefines.password
 admin = BotDefines.admin
@@ -60,12 +60,19 @@ while True:
             print (city)
             irc.send("PRIVMSG "+ channel +" :" + timelookup.get_localized_time(city) + '\r\n')
 
+        if text.find('santa') != -1:
+            irc.send("PRIVMSG "+ channel +" :" + "HO  HO HO!" + '\r\n')
         
         if text.find('insult') != -1:
             irc.send("PRIVMSG "+ channel +" :" + insult.random_line() + '\r\n')
         
         if text.find('random') != -1:
             irc.send("PRIVMSG "+ channel +" :" + insult.random_text() + '\r\n')
+
+        if text.find('!rules') != -1 or text.find('!r') != -1:
+            irc.send("PRIVMSG "+ channel +" :\x02\x034 Rule one:  \x035  no banning\r\n")
+            irc.send("PRIVMSG "+ channel +" :\x02\x034 Rule two:  \x035  see rule one\r\n")
+            irc.send("PRIVMSG "+ channel +" :\x02\x034 Rule three: \x035 It's against the rules to enforce em\r\n")
             
         '''if text.find(":hi") !=-1:
             user = text.split("!")

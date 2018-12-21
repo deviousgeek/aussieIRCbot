@@ -18,17 +18,18 @@ USER_LOOKUP = {
     "thearm": 'IDN60801/IDN60801.94592.json',
     "ukn0me": 'IDW60801/IDW60801.95610.json',
     "dooblynoobly": 'IDQ60901/IDQ60901.94576.json',
+    "doobz": 'IDQ60901/IDQ60901.94576.json',
     "oobz": 'IDQ60901/IDQ60901.94576.json',
     "sydneyi": 'IDN60901/IDN60901.94768.json',
     "duoi": 'IDN60801/IDN60801.95704.json',
     "mwsb": 'IDN60801/IDN60801.94926.json',
     "dudz": 'IDN60801/IDN60801.95757.json',
-    "chris": 'IDN60901/IDN60901.94768.json', 
-    #"mcspud": 'IDV60801/IDV60801.95864.json',
+    "chris": 'IDN60901/IDN60901.94768.json',     
     "mcspud": 'IDV60901/IDV60901.95936.json',
     "wyoung": 'IDN60801/IDN60801.94749.json',
     'win32user':'IDN60901/IDN60901.94765.json',
     'orlock': 'IDV60801/IDV60801.94864.json',
+    'pebbles': 'IDV60901/IDV60901.94872.json',
 }
 
 

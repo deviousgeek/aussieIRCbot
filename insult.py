@@ -5,3 +5,6 @@ def random_line():
 
 def random_text(): 
     return(random.choice(list(open('random.txt'))))
+
+def pickup_lines():
+    return(random.choice(list(open('pickup.txt'))))
