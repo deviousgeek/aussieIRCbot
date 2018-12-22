@@ -3,6 +3,7 @@ import re
 import socket
 import ssl
 import time
+import string
 import weatherdefine
 import timelookup
 import sys
@@ -18,10 +19,7 @@ botnick = BotDefines.botnick
 password = BotDefines.password
 admin = BotDefines.admin
 
-### Tail
-tail_files = [
-    'love.txt'
-]
+#connecting to IRC
 
 irc_C = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #defines the socket
 irc = ssl.wrap_socket(irc_C)
@@ -45,11 +43,19 @@ while True:
     reload(timelookup)
     reload(weatherdefine)
     try:
-        text=irc.recv(2040)
-        print(text)
+        text=irc.recv(2040)#get irc output
+ 
+
+        #find strange char in text string and remove them
+        text = filter(lambda x: x in string.printable, text)
+
+
+        
+        print text
+        #find user name in text
         user = text.split("!")
         user = user[0].strip(":")
-
+        #testing for key words and sending to def's
         if text.find('my place') != -1:
             print(user)
             irc.send("PRIVMSG "+ channel +" :" + weatherdefine.weather(user, text) + '\r\n')

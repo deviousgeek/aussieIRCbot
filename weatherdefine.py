@@ -26,6 +26,7 @@ USER_LOOKUP = {
     "dudz": 'IDN60801/IDN60801.95757.json',
     "chris": 'IDN60901/IDN60901.94768.json',     
     "mcspud": 'IDV60901/IDV60901.95936.json',
+    "veritay": 'IDV60901/IDV60901.95936.json',
     "wyoung": 'IDN60801/IDN60801.94749.json',
     'win32user':'IDN60901/IDN60901.94765.json',
     'orlock': 'IDV60801/IDV60801.94864.json',
@@ -50,6 +51,7 @@ def _calculate_temp_in_c(temp):
 
 
 def weather(user, text):
+    print text
     user = user.lower()
     words = text.split(':')[2].strip('\r\n')
     words = words.split()
