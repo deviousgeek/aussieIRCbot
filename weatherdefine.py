@@ -7,11 +7,13 @@ WEATHER_TEXT = (
         "Wind is from the {wind_dir} -- Wind speed {wind_spd_kt} KPH -- Wind "
         "gusts {gust_kmh} KPH -- Air temps is {air_temp}{degree}C -- {temp_f}"
         "{degree}F -- Relative Humidity is {rel_hum}% -- Air Pressure is "
-        "{press}kPa -- Rain {rain_trace}"
+        "{press}kPa -- Rain {rain_trace} -- Longitude  {lon} and Latitude {lat}."
 )
 FIELDS = {'rain_trace', 'degree', 'temp_f', 'rel_hum', 'local_date_time',
-        'press', 'wind_dir', 'air_temp', 'name', 'gust_kmh', 'wind_spd_kt', 'username'}
+        'press', 'wind_dir', 'air_temp', 'name', 'gust_kmh', 'wind_spd_kt', 'username', 'lon', 'lat'}
 USER_LOOKUP = {
+    "sveta": 'IDN60901/IDN60901.94767.json',
+    "oksana": 'IDN60901/IDN60901.94767.json',
     "berg": 'IDN60801/IDN60801.94785.json',
     "bluemaxima": 'IDN60801/IDN60801.94733.json',
     "dodobrain": 'IDQ60901/IDQ60901.94575.json',

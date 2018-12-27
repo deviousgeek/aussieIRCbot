@@ -4,6 +4,7 @@ import socket
 import ssl
 import time
 import string
+import random
 import weatherdefine
 import timelookup
 import sys
@@ -35,16 +36,18 @@ irc.send("PRIVMSG nickserv :identify %s %s\r\n" % (botnick, password))
 time.sleep(10)
 irc.send("JOIN "+ channel +"\n")
 
-
-
+def webhooks(data):
+    irc.send("PRIVMSG "+ channel +" :" + data + '\r\n')
 
 while True:
-
+    
     reload(timelookup)
     reload(weatherdefine)
     try:
         text=irc.recv(2040)#get irc output
- 
+        chance = random.randint(1,100)
+        chance1 = random.randint(1,100)
+        print chance
 
         #find strange char in text string and remove them
         text = filter(lambda x: x in string.printable, text)
@@ -69,15 +72,15 @@ while True:
         if text.find('santa') != -1:
             irc.send("PRIVMSG "+ channel +" :" + "HO  HO HO!" + '\r\n')
         
-        if text.find('insult') != -1:
+        if chance1 <= 2:
             irc.send("PRIVMSG "+ channel +" :" + insult.random_line() + '\r\n')
         
-        if text.find('random') != -1:
+        if chance <= 2:
             irc.send("PRIVMSG "+ channel +" :" + insult.random_text() + '\r\n')
 
         if text.find('!rules') != -1 or text.find('!r') != -1:
-            irc.send("PRIVMSG "+ channel +" :\x02\x034 Rule one:  \x035  no banning\r\n")
-            irc.send("PRIVMSG "+ channel +" :\x02\x034 Rule two:  \x035  see rule one\r\n")
+            irc.send("PRIVMSG "+ channel +" :\x02\x034 Rule one:  \x035  No Banninating!\r\n")
+            irc.send("PRIVMSG "+ channel +" :\x02\x034 Rule two:  \x035  See rule one\r\n")
             irc.send("PRIVMSG "+ channel +" :\x02\x034 Rule three: \x035 It's against the rules to enforce em\r\n")
             
         '''if text.find(":hi") !=-1:
