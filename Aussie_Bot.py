@@ -45,8 +45,8 @@ while True:
     reload(weatherdefine)
     try:
         text=irc.recv(2040)#get irc output
-        chance = random.randint(1,100)
-        chance1 = random.randint(1,100)
+        chance = random.randint(1,500)
+        chance1 = random.randint(1,500)
         print chance
 
         #find strange char in text string and remove them
@@ -60,7 +60,14 @@ while True:
         user = user[0].strip(":")
         #testing for key words and sending to def's
         if text.find('my place') != -1:
-            print(user)
+            
+             
+            irc.send("PRIVMSG "+ channel +" :" + weatherdefine.weather(user, text) + '\r\n')
+        if text.find('mcspud') != -1:
+            print user
+            user = 'spuds'
+            print user
+            
             irc.send("PRIVMSG "+ channel +" :" + weatherdefine.weather(user, text) + '\r\n')
 
         if text.find('!t') != -1:
@@ -72,10 +79,10 @@ while True:
         if text.find('santa') != -1:
             irc.send("PRIVMSG "+ channel +" :" + "HO  HO HO!" + '\r\n')
         
-        if chance1 <= 2:
+        if chance1 <= 1:
             irc.send("PRIVMSG "+ channel +" :" + insult.random_line() + '\r\n')
         
-        if chance <= 2:
+        if chance <= 1:
             irc.send("PRIVMSG "+ channel +" :" + insult.random_text() + '\r\n')
 
         if text.find('!rules') != -1 or text.find('!r') != -1:
