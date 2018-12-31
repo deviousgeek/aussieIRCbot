@@ -45,9 +45,8 @@ while True:
     reload(weatherdefine)
     try:
         text=irc.recv(2040)#get irc output
-        chance = random.randint(1,500)
-        chance1 = random.randint(1,500)
-        print chance
+        chance = random.randint(1,200)
+        chance1 = random.randint(1,200)
 
         #find strange char in text string and remove them
         text = filter(lambda x: x in string.printable, text)
