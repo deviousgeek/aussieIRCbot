@@ -4,8 +4,6 @@ from BeautifulSoup import BeautifulSoup
 
 import re
 def gettitle(url):
-        
-    print url
     # Copy all of the content from the provided web page
     webpage = urlopen(url).read()
 
@@ -22,5 +20,6 @@ def gettitle(url):
     descSoup = soup2.findAll("p")
     titleSoup = str(titleSoup).strip('[<title>')
     titleSoup = titleSoup.strip('</title>]')
-
+    titleSoup = re.sub("&#(\d+);", lambda m: chr(int(m.group(1))), titleSoup)
+    print titleSoup
     return titleSoup 

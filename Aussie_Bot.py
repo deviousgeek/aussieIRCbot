@@ -43,6 +43,7 @@ while True:
     
     reload(timelookup)
     reload(weatherdefine)
+    reload(webtitle)
     try:
         text=irc.recv(2040)#get irc output
         chance = random.randint(1,200)
@@ -58,10 +59,11 @@ while True:
         user = text.split("!")
         user = user[0].strip(":")
         #testing for key words and sending to def's
-        if text.find('my place') != -1:
-            
-             
+        if text.find('my place') != -1:             
             irc.send("PRIVMSG "+ channel +" :" + weatherdefine.weather(user, text) + '\r\n')
+
+
+
         if text.find('mcspud') != -1:
             print user
             user = 'spuds'
@@ -89,12 +91,11 @@ while True:
             irc.send("PRIVMSG "+ channel +" :\x02\x034 Rule two:  \x035  See rule one\r\n")
             irc.send("PRIVMSG "+ channel +" :\x02\x034 Rule three: \x035 It's against the rules to enforce em\r\n")
             
-        '''if text.find(":hi") !=-1:
-            user = text.split("!")
-            user = user[0].strip(":")
-            print user
-            irc.send("PRIVMSG "+ channel +" :Hello!\r\n")'''
-            
+        match = re.search("(?P<url>https?://[^\s]+)", text)
+        if match is not None: 
+            print match.group("url")
+            irc.send("PRIVMSG "+ channel +" :" + webtitle.gettitle(match.group("url")) + '\r\n')
+            print match.group("url")
          
             
 
