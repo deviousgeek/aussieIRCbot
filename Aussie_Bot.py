@@ -94,7 +94,7 @@ while True:
         match = re.search("(?P<url>https?://[^\s]+)", text)
         if match is not None: 
             print match.group("url")
-            irc.send("PRIVMSG "+ channel +" :" + webtitle.gettitle(match.group("url")) + '\r\n')
+            irc.send("PRIVMSG "+ channel +" :" + webtitle.gettitle(match.group("url"), user) + '\r\n')
             print match.group("url")
          
             
