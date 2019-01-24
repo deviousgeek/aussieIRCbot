@@ -25,7 +25,7 @@ def main():
                 LOGGER.debug(text)
                 if len(text) == 0:
                     get_bot()
-                if data.find ( "Nickname is already in use" ) != -1:
+                if text.find ( "Nickname is already in use" ) != -1:
                     NICK = NICK + "_"
                     irc_connection.send("NICK {}\n".format(NICK).encode("utf-8"))                  
 
