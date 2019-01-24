@@ -21,8 +21,14 @@ def main():
         try:
             try:
 
-                text = irc_connection.recv(2040).decode("utf-8")
+                text = irc_connection.recv(4096).decode("utf-8")
                 LOGGER.debug(text)
+                if len(text) == 0:
+                    get_bot()
+                if data.find ( "Nickname is already in use" ) != -1:
+                    NICK = NICK + "_"
+                    irc_connection.send("NICK {}\n".format(NICK).encode("utf-8"))                  
+
             except Exception as error_point:
                 LOGGER.error(error_point)
                 continue
