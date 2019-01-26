@@ -21,7 +21,7 @@ def main():
         try:
             try:
 
-                text = irc_connection.recv(4096).decode("utf-8")
+                text = irc_connection.recv(1024).decode("utf-8")
                 LOGGER.debug(text)
                 if len(text) == 0:
                     get_bot()
