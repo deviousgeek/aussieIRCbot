@@ -65,7 +65,7 @@ def main():
                     pass
             except Exception as error_point:
                 LOGGER.error("for private message %s", error_point)
-
+            print(text)
             # chance = random.randint(1, 200)
             chance1 = random.randint(1, 200)
             if "spamstopper" in INSTALLED_MODULES:

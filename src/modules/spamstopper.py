@@ -3,9 +3,12 @@ import time
 
 
 def message_text(name_timers, user, text):
-    gap = time.time() - name_timers[user]
+    try:
+        gap = time.time() - name_timers[user]
+    except:
+        gap = 10
     name_timers.update({user: time.time()})
-    if gap <= 5:
+    if gap <= 9:
         text=""
     
     return text, name_timers
