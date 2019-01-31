@@ -6,9 +6,9 @@ def message_text(name_timers, user, text):
     try:
         gap = time.time() - name_timers[user]
     except:
-        gap = 10
+        gap = 6
     name_timers.update({user: time.time()})
-    if gap <= 9:
+    if gap <= 5:
         text=""
     
     return text, name_timers

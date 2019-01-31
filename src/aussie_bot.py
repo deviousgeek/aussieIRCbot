@@ -73,7 +73,7 @@ def main():
                 if text.find('{} = {} :'.format(NICK, CHANNEL)) != -1:
                     name_timers = (spamstopper.make_user_list(text, NICK, CHANNEL))
                     print(name_timers)
-                if text.find("!n") != -1 or text.find("!t") != -1 or text.find("!q") != -1 or text.find("my place") != -1:
+                if text.find("!n") != -1 or text.find("!t") != -1 or text.find("!q") != -1 or text.find("my place") != -1 or text.find("!r") != -1:
                     text, name_timers = (spamstopper.message_text(name_timers, user, text))
 
             if "weather" in INSTALLED_MODULES:
