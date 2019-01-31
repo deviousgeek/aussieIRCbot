@@ -17,7 +17,7 @@ def get_bot():
     # irc.send("PASS %s\n" % (password))
 
     LOGGER.info("Authenticating...")
-    irc.send("USER {0} {0} {0} :meLon-Test\n".format(NICK).encode("utf-8"))
+    irc.send("USER {0} {0} {0} :TINY-tx-cock\n".format(NICK).encode("utf-8"))
     irc.send("NICK {}\n".format(NICK).encode("utf-8"))
     LOGGER.info("Authenticated!")
 

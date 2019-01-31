@@ -1,7 +1,7 @@
 """ Run irc bot logic and connection """
 from importlib import reload, import_module
 import re
-import random
+import random, time
 from connection import get_bot
 from logger import LOGGER
 from settings import INSTALLED_MODULES, CHANNEL
@@ -27,12 +27,13 @@ def main():
                 LOGGER.error(error_point)
                 continue
             # rejoin CHANNEL on kick
+
+
             if text.find("KICK {} {} ".format(CHANNEL, NICK)) != -1:
                 irc_connection.send(
                     "JOIN {}\n".format(CHANNEL).encode("utf-8"))
             # check for private message
-            # Prevent Timeout
-            print(text)
+            # Prevent Timeout 
 
             if text.find("PING") != -1:
                 irc_connection.send(
@@ -67,11 +68,16 @@ def main():
 
             # chance = random.randint(1, 200)
             chance1 = random.randint(1, 200)
+            if "spamstopper" in INSTALLED_MODULES:
+                from modules import spamstopper
+                if text.find('{} = {} :'.format(NICK, CHANNEL)) != -1:
+                    name_timers = (spamstopper.make_user_list(text, NICK, CHANNEL))
+                    print(name_timers)
+                if text.find("!n") != -1 or text.find("!t") != -1 or text.find("!q") != -1 or text.find("my place") != -1:
+                    text, name_timers = (spamstopper.message_text(name_timers, user, text))
 
             if "weather" in INSTALLED_MODULES:
                 from modules import weather
-
-                print(user, text)
                 """if text.find('my place') != -1:
                     #user = 'mcspud'
                     irc_connection.send(
@@ -90,15 +96,15 @@ def main():
                             ).encode("utf-8")
                         )
 
-            if "time" in INSTALLED_MODULES:
-                from modules import time
+            if "timezone" in INSTALLED_MODULES:
+                from modules import timezone
 
                 if text.find("!t") != -1:
                     city = text.split("!t ")
                     city = city[1]
                     irc_connection.send(
                         "PRIVMSG {} :{}\r\n".format(
-                            CHANNEL, time.get_localized_time(city)
+                            CHANNEL, timezone.get_localized_time(city)
                         ).encode("utf-8")
                     )
 
@@ -154,6 +160,8 @@ def main():
                     irc_connection.send(("PRIVMSG "+ CHANNEL +" :\x02\x034 Rule one:  \x035  No Banninating!\r\n").encode("utf-8"))
                     irc_connection.send(("PRIVMSG "+ CHANNEL +" :\x02\x034 Rule two:  \x035  See rule one\r\n").encode("utf-8"))
                     irc_connection.send(("PRIVMSG "+ CHANNEL +" :\x02\x034 Rule three: \x035 It's against the rules to enforce em\r\n").encode("utf-8"))
+
+                    irc_connection.send(("PRIVMSG "+ CHANNEL +" :\x02\x034 Rule four:  \x035  No spamming the bot\r\n").encode("utf-8"))
 
         except Exception as error_point:
             LOGGER.error("end of IF for aussie_bot %s", error_point)

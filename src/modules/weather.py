@@ -50,6 +50,9 @@ USER_LOOKUP = {
     "win32user": "IDN60901/IDN60901.94765.json",
     "orlock": "IDV60801/IDV60801.94864.json",
     "pebbles": "IDV60901/IDV60901.94872.json",
+    "tx": "IDN60801/IDN60801.95778.json",
+    "ar1a": "IDN60901/IDN60901.94767.json",
+    "tehstickman": "IDQ60801/IDQ60801.94367.json",
 }
 
 
